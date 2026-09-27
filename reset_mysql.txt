@@ -1,0 +1,2 @@
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'sowmi16';
+FLUSH PRIVILEGES;

@@ -1,0 +1,16 @@
+@import url("./ConsumptionReports.css");
+
+.distribution-bars-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.d-bar-row { display: flex; flex-direction: column; gap: 6px; }
+.d-label { display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; color: #1e293b; }
+.d-progress { height: 10px; background: #f1f5f9; border-radius: 99px; overflow: hidden; }
+.d-fill { height: 100%; border-radius: 99px; transition: width 0.4s ease; }
+.d-fill.upi { background: linear-gradient(90deg, #079b9b, #37c5c7); }
+.d-fill.netbank { background: linear-gradient(90deg, #2563eb, #60a5fa); }
+.d-fill.cards { background: linear-gradient(90deg, #7c3aed, #a78bfa); }

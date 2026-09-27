@@ -1,0 +1,21 @@
+.accounts-page {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f8fafc;
+  font-family: var(--font-app);
+}
+
+.accounts-main {
+  flex: 1;
+  margin-left: 265px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.accounts-content {
+  padding: 24px 32px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}

@@ -1,0 +1,127 @@
+/* Resident Dashboard — all classes are rd- prefixed so nothing collides with other pages. */
+
+.rd-content { display: flex; flex-direction: column; gap: 22px; }
+
+.rd-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 1.2px; color: #079b9b; }
+.rd-eyebrow.light { color: rgba(255, 255, 255, 0.75); }
+
+.rd-welcome { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.rd-welcome h2 { margin: 4px 0 4px; font-size: 26px; color: #0f172a; }
+.rd-welcome p { margin: 0; color: #64748b; font-size: 14px; }
+.rd-meter-pill {
+  display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; background: #fff;
+  border: 1px solid #e2e8f0; border-radius: 999px; font-size: 12px; font-weight: 600; color: #334155;
+}
+.rd-dot { width: 8px; height: 8px; border-radius: 50%; background: #94a3b8; }
+.rd-dot.on { background: #10b981; box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2); }
+.rd-dot.warn { background: #f59e0b; }
+
+.rd-state { padding: 14px 18px; border-radius: 12px; background: #fff; border: 1px solid #e2e8f0; color: #475569; font-weight: 500; }
+.rd-state-error { background: #fef2f2; border-color: #fecaca; color: #b91c1c; }
+
+/* ── Top: billing cycle + KPIs ── */
+.rd-top { display: grid; grid-template-columns: minmax(300px, 1fr) 1.6fr; gap: 20px; }
+
+.rd-bill-card { color: #fff; border-radius: 18px; padding: 22px 24px; display: flex; flex-direction: column; gap: 6px; box-shadow: 0 10px 30px rgba(7, 100, 110, 0.18); }
+.rd-bill-card.clear { background: linear-gradient(135deg, #0f766e 0%, #0e7490 100%); }
+.rd-bill-card.due { background: linear-gradient(135deg, #0e7490 0%, #1d4ed8 100%); }
+.rd-bill-head { display: flex; justify-content: space-between; align-items: center; }
+.rd-bill-period { font-size: 15px; font-weight: 600; opacity: 0.95; margin-top: 4px; }
+.rd-bill-amount-label { font-size: 11px; letter-spacing: 1px; opacity: 0.75; margin-top: 10px; }
+.rd-bill-amount { font-size: 38px; font-weight: 800; line-height: 1.1; }
+.rd-bill-meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(255, 255, 255, 0.2); }
+.rd-bill-meta span { display: block; font-size: 10px; letter-spacing: 0.8px; opacity: 0.7; }
+.rd-bill-meta strong { font-size: 14px; }
+.rd-bill-meta em { font-style: normal; font-weight: 500; opacity: 0.85; }
+.rd-bill-meta em.late { color: #fecaca; font-weight: 700; }
+.rd-bill-actions { display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+.rd-bill-empty { margin: 18px 0; opacity: 0.9; }
+
+.rd-btn-primary { background: #fff; color: #0e7490; border: none; padding: 10px 18px; border-radius: 10px; font-weight: 700; cursor: pointer; }
+.rd-btn-primary:hover { background: #f0fdfa; }
+.rd-btn-ghost { background: rgba(255, 255, 255, 0.14); color: #fff; border: 1px solid rgba(255, 255, 255, 0.35); padding: 10px 16px; border-radius: 10px; font-weight: 600; cursor: pointer; }
+.rd-btn-ghost:hover { background: rgba(255, 255, 255, 0.24); }
+
+.rd-kpis { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.rd-kpi { background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 16px 18px; display: flex; flex-direction: column; gap: 4px; }
+.rd-kpi span { font-size: 10.5px; font-weight: 700; letter-spacing: 1px; color: #64748b; }
+.rd-kpi strong { font-size: 24px; color: #0f172a; }
+.rd-kpi strong.due-text { color: #dc2626; }
+.rd-kpi small { color: #64748b; font-size: 12px; }
+.rd-kpi b.up { color: #dc2626; }
+.rd-kpi b.down { color: #059669; }
+
+/* ── Status badges ── */
+.rd-badge { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 11px; font-weight: 700; }
+.rd-badge-paid { background: #d1fae5; color: #047857; }
+.rd-badge-pending { background: #fef3c7; color: #b45309; }
+.rd-badge-superseded { background: #e2e8f0; color: #475569; }
+.rd-bill-card .rd-badge { background: rgba(255, 255, 255, 0.22); color: #fff; }
+
+/* ── Cards / charts ── */
+.rd-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 18px 20px; }
+.rd-card-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; gap: 10px; }
+.rd-card-head h3 { margin: 0; font-size: 16px; color: #0f172a; }
+.rd-card-head p { margin: 3px 0 0; font-size: 12px; color: #64748b; }
+.rd-charts { display: grid; grid-template-columns: 1.7fr 1fr; gap: 20px; }
+.rd-empty { padding: 36px 12px; text-align: center; color: #94a3b8; font-size: 14px; }
+.rd-link { background: none; border: none; color: #0d8a8a; font-weight: 600; font-size: 13px; cursor: pointer; padding: 0; white-space: nowrap; }
+.rd-link:hover { text-decoration: underline; }
+.rd-tooltip { background: #0f172a; color: #fff; padding: 8px 12px; border-radius: 8px; font-size: 12px; display: flex; flex-direction: column; gap: 2px; }
+.rd-tooltip span { color: #5eead4; font-weight: 700; }
+
+/* ── Bottom: invoices + side column ── */
+.rd-bottom { display: grid; grid-template-columns: 1.5fr 1fr; gap: 20px; align-items: start; }
+.rd-side { display: flex; flex-direction: column; gap: 20px; }
+.rd-table-wrap { overflow-x: auto; }
+.rd-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.rd-table th { text-align: left; font-size: 10.5px; letter-spacing: 0.8px; color: #64748b; font-weight: 700; padding: 8px 10px; border-bottom: 1px solid #e2e8f0; }
+.rd-table td { padding: 11px 10px; border-bottom: 1px solid #f1f5f9; color: #1e293b; }
+.rd-table tr.muted td { color: #94a3b8; }
+.rd-table .mono { font-family: var(--font-app);
+  font-variant-numeric: tabular-nums; font-size: 12px; }
+.rd-pdf-btn { background: #f0fdfa; color: #0f766e; border: 1px solid #99f6e4; border-radius: 8px; padding: 5px 12px; font-weight: 700; font-size: 12px; cursor: pointer; }
+.rd-pdf-btn:hover:not(:disabled) { background: #ccfbf1; }
+.rd-pdf-btn:disabled { opacity: 0.6; cursor: wait; }
+.rd-none { color: #cbd5e1; }
+
+.rd-alerts, .rd-tips ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.rd-alerts li { display: flex; gap: 10px; }
+.rd-alerts strong, .rd-tips strong { font-size: 13px; color: #0f172a; }
+.rd-alerts p, .rd-tips p { margin: 2px 0; font-size: 12px; color: #64748b; line-height: 1.45; }
+.rd-alerts small { color: #94a3b8; font-size: 11px; }
+.rd-sev { width: 9px; height: 9px; border-radius: 50%; background: #38bdf8; margin-top: 5px; flex: none; }
+.sev-critical .rd-sev { background: #ef4444; box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.18); }
+.sev-warning .rd-sev { background: #f59e0b; }
+.sev-success .rd-sev { background: #10b981; }
+
+.rd-tips li { padding: 10px 12px; border-radius: 10px; background: #f8fafc; border-left: 3px solid #cbd5e1; }
+.rd-tips li.tip-high { background: #fef2f2; border-left-color: #ef4444; }
+.rd-tips li.tip-medium { background: #fffbeb; border-left-color: #f59e0b; }
+.rd-tips li.tip-good { background: #ecfdf5; border-left-color: #10b981; }
+.rd-tips li.tip-info { border-left-color: #38bdf8; }
+
+@media (max-width: 1100px) {
+  /* minmax(0, 1fr), not bare 1fr: a bare 1fr track's automatic minimum size is
+     its content's min-content width, so a wide table (rd-invoices) or chart
+     forces the single column — and the whole page — wider than the phone
+     screen instead of shrinking to fit it. minmax(0, 1fr) removes that floor. */
+  .rd-top, .rd-charts, .rd-bottom { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 480px) {
+  .rd-kpis { grid-template-columns: 1fr 1fr; }
+  .rd-bill-meta { grid-template-columns: 1fr 1fr; }
+  .rd-bill-amount { font-size: 30px; }
+}
+
+@media (max-width: 360px) {
+  .rd-kpis, .rd-bill-meta { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* Error / session notice */
+.rd-state-error strong { display: block; }
+.rd-state-detail { margin: 6px 0 0; font-weight: 400; font-size: 13.5px; color: #7f1d1d; line-height: 1.5; }
+.rd-state-actions { display: flex; gap: 14px; align-items: center; margin-top: 12px; flex-wrap: wrap; }
+.rd-btn-solid { background: #079b9b; color: #fff; }
+.rd-btn-solid:hover { background: #068484; }

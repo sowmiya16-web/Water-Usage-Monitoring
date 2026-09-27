@@ -1,0 +1,45 @@
+.alerts-ops-page {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f8fafc;
+  font-family: var(--font-app);
+}
+
+.alerts-ops-main {
+  flex: 1;
+  margin-left: 265px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.alerts-ops-content {
+  padding: 24px 32px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.badge-sev.very-critical, .badge-sev.very_critical {
+  background: #7f1d1d !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+}
+
+.badge-sev.critical {
+  background: #fee2e2 !important;
+  color: #991b1b !important;
+  font-weight: 700 !important;
+}
+
+.badge-sev.warning {
+  background: #fef3c7 !important;
+  color: #b45309 !important;
+  font-weight: 700 !important;
+}
+
+.badge-sev.info {
+  background: #e0f2fe !important;
+  color: #0369a1 !important;
+  font-weight: 700 !important;
+}

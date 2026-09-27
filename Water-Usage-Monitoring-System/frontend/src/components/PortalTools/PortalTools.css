@@ -1,0 +1,28 @@
+/* Header tools injected into every admin page (language selector + Resident Portal button) */
+.portal-tools { display: flex; align-items: center; gap: 10px; flex-wrap: nowrap; margin-left: auto; position: relative; z-index: 60; }
+
+.pt-resident { position: relative; display: inline-flex; }
+.pt-resident-main, .pt-resident-caret {
+  border: 1px solid #99f6e4; background: #f0fdfa; color: #0f766e; font-weight: 700; font-size: 12.5px;
+  cursor: pointer; font-family: inherit; line-height: 1; white-space: nowrap;
+}
+.pt-resident-main { padding: 8px 12px; border-radius: 10px 0 0 10px; display: inline-flex; align-items: center; gap: 6px; }
+.pt-resident-caret { padding: 8px 9px; border-left: none; border-radius: 0 10px 10px 0; }
+.pt-resident-main:hover, .pt-resident-caret:hover { background: #ccfbf1; }
+.pt-resident-menu {
+  position: absolute; top: calc(100% + 8px); right: 0; min-width: 210px; margin: 0; padding: 6px; list-style: none;
+  background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; box-shadow: 0 14px 30px rgba(15, 23, 42, 0.16); z-index: 200;
+}
+.pt-resident-menu button { width: 100%; text-align: left; border: none; background: transparent; padding: 9px 11px; border-radius: 8px; font-size: 13px; font-weight: 600; color: #0f172a; cursor: pointer; font-family: inherit; }
+.pt-resident-menu button:hover { background: #f0fdfa; color: #0f766e; }
+
+@media (max-width: 900px) {
+  /* Header action rows wrap, and the tools take their own row instead of stretching the page */
+  .admin-header-right, .cop-header-actions, .comm-header-right { flex-wrap: wrap; max-width: 100%; }
+  .portal-tools { flex: 1 1 100%; justify-content: flex-start; margin-left: 0; flex-wrap: wrap; }
+}
+@media (max-width: 600px) {
+  .pt-resident-main span { display: none; }   /* icon only on phones */
+  .pt-resident-main { padding: 8px 10px; }
+  .pt-resident-menu { right: auto; left: 0; }
+}

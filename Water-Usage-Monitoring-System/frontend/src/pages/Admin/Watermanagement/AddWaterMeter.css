@@ -1,0 +1,275 @@
+/* =========================================================
+   ADD WATER METER PAGE — ENHANCED LIGHT SAAS THEME
+========================================================= */
+
+.admin-add-meter-page {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f8fafc;
+  color: #0f172a;
+  font-family: var(--font-app);
+}
+
+.admin-add-meter-main {
+  flex: 1;
+  margin-left: 265px;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+  min-height: 100vh;
+  min-width: 0;
+}
+
+/* TOP LIGHT HEADER */
+.admin-header-light {
+  padding: 24px 36px;
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.header-left h1 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 4px;
+}
+
+.header-subtitle {
+  font-size: 13px;
+  color: #64748b;
+  margin: 0;
+}
+
+.add-meter-page .header-right,
+.add-water-meter-container .header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.breadcrumbs {
+  font-size: 12px;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.breadcrumbs span {
+  color: #64748b;
+}
+
+.breadcrumbs span.active {
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.btn-back-meters {
+  background: #ffffff;
+  color: #1e293b;
+  border: 1px solid #cbd5e1;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.btn-back-meters:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+}
+
+/* MAIN FORM CONTAINER — LARGER WIDTH & PROPER BALANCE */
+.add-meter-form-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 24px 32px 40px;
+  box-sizing: border-box;
+}
+
+.alert-success-banner {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #15803d;
+  padding: 14px 20px;
+  border-radius: 10px;
+  margin-bottom: 24px;
+  font-weight: 600;
+  font-size: 14px;
+  box-shadow: 0 2px 4px rgba(22, 101, 52, 0.05);
+}
+
+/* WHITE FORM CARD — PROPER CARD HEIGHT & SHADOW */
+.white-form-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.02);
+  padding: 32px 36px;
+}
+
+/* SECTION GROUPS WITH SUBTLE FILLED BACKGROUND */
+.form-section-group {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 22px 24px;
+  margin-bottom: 22px;
+}
+
+.section-blue-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1d4ed8;
+  margin: 0 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* GRIDS & ROWS */
+.fields-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.fields-row-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+.fields-row-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+/* FORM FIELDS */
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-field label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.star {
+  color: #dc2626;
+}
+
+.form-field input,
+.form-field select {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 11px 14px;
+  font-size: 13px;
+  color: #0f172a;
+  font-family: inherit;
+  outline: none;
+  transition: all 0.15s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-field input::placeholder {
+  color: #94a3b8;
+}
+
+.form-field input:focus,
+.form-field select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.14);
+}
+
+.form-field input.field-error,
+.form-field select.field-error {
+  border-color: #dc2626;
+  background: #fff5f5;
+}
+
+.error-text {
+  color: #dc2626;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* BOTTOM ACTION BUTTONS */
+.form-action-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14px;
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.btn-cancel-white {
+  background: #ffffff;
+  color: #475569;
+  border: 1px solid #cbd5e1;
+  padding: 10px 26px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-cancel-white:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+  border-color: #94a3b8;
+}
+
+.btn-submit-blue {
+  background: linear-gradient(135deg, #1d4ed8 0%, #0284c7 100%);
+  color: #ffffff;
+  border: none;
+  padding: 11px 32px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(29, 78, 216, 0.25);
+  transition: all 0.15s ease;
+}
+
+.btn-submit-blue:hover {
+  box-shadow: 0 6px 12px rgba(29, 78, 216, 0.35);
+  transform: translateY(-1px);
+}
+
+/* RESPONSIVE BREAKPOINTS */
+@media (max-width: 1024px) {
+  .admin-add-meter-main {
+    margin-left: 0;
+  }
+  .fields-row-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .fields-row-3,
+  .fields-row-2 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .add-meter-form-container {
+    padding: 16px;
+  }
+}

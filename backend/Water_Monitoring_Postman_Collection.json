@@ -1,0 +1,309 @@
+{
+	"info": {
+		"_postman_id": "water-monitoring-sys-collection-v2-full",
+		"name": "Water Usage Monitoring System API (Week 2 Complete)",
+		"description": "Complete Postman API Collection for Week 2 covering Authentication, Buildings, Apartments, and Residents",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Authentication",
+			"item": [
+				{
+					"name": "Login - Resident",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"resident@watermonitor.com\",\n    \"password\": \"Resident@123\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login - Admin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"admin@watermonitor.com\",\n    \"password\": \"Admin@123\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login - Manager",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"manager@watermonitor.com\",\n    \"password\": \"Manager@123\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "2. Residents & Household",
+			"item": [
+				{
+					"name": "Get All Residents",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/residents",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"residents"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Resident",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fullName\": \"Rahul Sharma\",\n    \"email\": \"rahul.sharma@example.com\",\n    \"phone\": \"9876543210\",\n    \"apartmentNumber\": \"A-101\",\n    \"buildingName\": \"Block A\",\n    \"occupancyStatus\": \"OCCUPIED\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/residents",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"residents"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Residents by Building",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/residents/building/Block A",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"residents",
+								"building",
+								"Block A"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "3. Buildings & Apartments",
+			"item": [
+				{
+					"name": "Get All Buildings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/buildings",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"buildings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Building",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"buildingName\": \"Block B\",\n    \"totalFloors\": 5,\n    \"totalUnits\": 10\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/buildings",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"buildings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Apartments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/apartments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"apartments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Apartment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"apartmentNumber\": \"B-201\",\n    \"buildingName\": \"Block B\",\n    \"floorNumber\": 2,\n    \"occupancyStatus\": \"OCCUPIED\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/apartments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"apartments"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "4. System Health",
+			"item": [
+				{
+					"name": "Test Backend",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/test",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"test"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

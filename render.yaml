@@ -1,0 +1,35 @@
+# Render "Blueprint" — lets Render auto-create the service from this file instead of
+# manual setup (New + → Blueprint, point at this repo). Values marked sync: false are
+# secrets Render will prompt for and store itself; nothing sensitive lives here.
+services:
+  - type: web
+    name: water-monitoring-backend
+    runtime: docker
+    rootDir: backend/spring-boot-app
+    dockerfilePath: ./Dockerfile
+    plan: free
+    envVars:
+      - key: DATABASE_URL
+        sync: false # jdbc:postgresql://<supabase-host>:6543/postgres?sslmode=require
+      - key: DATABASE_USERNAME
+        sync: false
+      - key: DATABASE_PASSWORD
+        sync: false
+      - key: DATABASE_DRIVER
+        value: org.postgresql.Driver
+      - key: DATABASE_DIALECT
+        value: org.hibernate.dialect.PostgreSQLDialect
+      - key: FRONTEND_URL
+        sync: false # your Vercel URL, e.g. https://water-monitoring.vercel.app
+      - key: CORS_EXTRA_ORIGINS
+        sync: false # same Vercel URL — unblocks the frontend if it ever calls the API directly
+      - key: MAIL_USERNAME
+        sync: false
+      - key: MAIL_PASSWORD
+        sync: false
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: GEMINI_API_KEY_1
+        sync: false
+      - key: GEMINI_API_KEY_2
+        sync: false

@@ -1,0 +1,302 @@
+.admin-reports-page {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f8fafc;
+  font-family: var(--font-app);
+}
+
+.admin-reports-main {
+  flex: 1;
+  margin-left: 265px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.reports-content-container {
+  padding: 24px 32px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.reports-filter-bar {
+  display: flex;
+  justify-content: flex-start;
+  max-width: 100%;
+}
+
+.filter-tabs-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  background: #ffffff;
+  padding: 4px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  max-width: 100%;
+}
+
+.report-tab {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  color: #64748b;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.report-tab.active {
+  background: #079b9b;
+  color: #ffffff;
+}
+
+/* KPI GRID */
+.reports-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 16px;
+}
+
+.report-kpi-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.report-kpi-card.highlight {
+  background: #f0fdfa;
+  border-color: #99f6e4;
+}
+
+.report-kpi-card span { display: block; font-size: 11px; font-weight: 700; color: #64748b; }
+.report-kpi-card strong { display: block; font-size: 22px; font-weight: 800; color: #0f172a; margin: 4px 0; }
+.report-kpi-card small { font-size: 11px; color: #64748b; }
+
+/* CHART CARD */
+.reports-chart-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 20px 24px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.block-bars-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  height: 150px;
+  margin-top: 24px;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 8px;
+}
+
+.b-bar-col { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.b-val { font-size: 11px; font-weight: 700; color: #078f91; }
+.b-bar-wrapper { height: 120px; display: flex; align-items: flex-end; }
+.b-bar-fill { width: 24px; background: linear-gradient(180deg, #079b9b, #37c5c7); border-radius: 6px 6px 0 0; }
+.b-name { font-size: 12px; font-weight: 600; color: #64748b; }
+
+/* TABLE */
+.reports-table-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.table-controls-row {
+  padding: 16px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* NOTE ON NAMING: this stylesheet is bundled into one global CSS file with every other
+   page (plain CSS, not modules), so generic class names collide across pages. Everything
+   below is deliberately namespaced "rpt-" so it can never shadow another page's classes
+   (e.g. Current Bill's own .modal-box, Billing History's own .table-actions). */
+
+/* Search box — shared markup across every ConsumptionReports-family page (Reports, Issue
+   Tracking, Maintenance, Service Requests); it had no styling at all before this. */
+.rpt-search-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1 1 220px;
+  min-width: 0;
+  max-width: 320px;
+  padding: 8px 12px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+}
+
+.rpt-search-icon {
+  flex-shrink: 0;
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+.rpt-search-box input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  font-size: 13px;
+  font-family: inherit;
+  color: #0f172a;
+  outline: none;
+}
+
+.table-wrapper-scroll { overflow-x: auto; max-width: 100%; -webkit-overflow-scrolling: touch; }
+.reports-table { width: 100%; border-collapse: collapse; min-width: 600px; }
+.reports-table th { text-align: left; padding: 12px 16px; font-size: 12px; font-weight: 700; color: #64748b; background: #f8fafc; border-bottom: 1px solid #e2e8f0; white-space: nowrap; }
+.reports-table td { padding: 14px 16px; font-size: 13px; color: #1e293b; border-bottom: 1px solid #f1f5f9; }
+
+.trend-badge { padding: 3px 8px; border-radius: 6px; font-size: 11px; font-weight: 700; white-space: nowrap; }
+.trend-badge.positive { background: #ecfdf5; color: #047857; }
+.trend-badge.negative { background: #fef2f2; color: #dc2626; }
+
+/* Generic admin modal shell for pages that render a modal but ship no styling of their
+   own: Issue Tracking, Maintenance Management, Service Requests. */
+.rpt-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(15, 23, 42, 0.55);
+  box-sizing: border-box;
+}
+
+.rpt-modal-box {
+  width: 100%;
+  max-width: 480px;
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.3);
+  box-sizing: border-box;
+}
+
+.rpt-modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 20px 22px 14px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.rpt-modal-sub { margin: 4px 0 0; font-size: 12.5px; color: #64748b; }
+
+.rpt-btn-close-modal {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background: #f1f5f9;
+  color: #475569;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.rpt-btn-close-modal:hover { background: #e2e8f0; }
+
+.rpt-modal-body { padding: 18px 22px; display: flex; flex-direction: column; gap: 14px; }
+
+.rpt-modal-actions-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
+  padding: 14px 22px 20px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.rpt-filter-selects { display: flex; flex-wrap: wrap; gap: 10px; }
+.rpt-filter-selects select {
+  padding: 8px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 13px;
+  font-family: inherit;
+  background: #fff;
+  color: #0f172a;
+  max-width: 100%;
+}
+
+.rpt-table-actions { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; }
+.rpt-table-actions button {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  background: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.rpt-table-actions button:hover { background: #f8fafc; }
+
+.rpt-b-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 14px; }
+.rpt-b-hero-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+.rpt-b-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 14px;
+}
+.rpt-b-box span { display: block; font-size: 10.5px; font-weight: 700; color: #64748b; }
+.rpt-b-box strong { display: block; font-size: 14px; color: #0f172a; margin: 3px 0; word-break: break-word; }
+.rpt-b-box p { margin: 0; font-size: 12px; color: #64748b; }
+
+.rpt-notice-alert-banner {
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  color: #7c5a06;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .reports-content-container { padding: 20px 20px 40px; }
+  .rpt-search-box { max-width: none; }
+}
+
+@media (max-width: 600px) {
+  .table-controls-row { flex-direction: column; align-items: stretch; }
+  .rpt-modal-actions-bar { flex-direction: column-reverse; }
+  .rpt-modal-actions-bar button { width: 100%; }
+  /* A few b-box tiles set gridColumn:"span 2" inline (JSX); inline styles beat any CSS
+     rule without !important, so this is the only way to make them stack on phones. */
+  .rpt-b-box { grid-column: auto !important; }
+}

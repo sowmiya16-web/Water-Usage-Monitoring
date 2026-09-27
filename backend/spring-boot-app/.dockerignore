@@ -1,0 +1,6 @@
+target/
+*.jar
+application.properties
+.mvn/
+.idea/
+*.iml

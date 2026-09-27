@@ -1,0 +1,173 @@
+@import url("../Billing/BillingManagement.css");
+@import url("../../Resident/Account/AccountSettings.css");
+
+
+/* =========================================================
+   SYSTEM SETTINGS SPECIFIC STYLES
+========================================================= */
+
+.settings-saved-badge {
+  flex-shrink: 0;
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: #edfaf4;
+  color: #1f9a62;
+  font-size: 11px;
+  font-weight: 600;
+  border: 1px solid #c1f0d8;
+}
+
+.system-settings-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: 860px;
+}
+
+.sys-settings-card {
+  background: #ffffff;
+  border: 1px solid #e8eef1;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.sys-card-header {
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid #f0f5f7;
+}
+
+.sys-card-header h3 {
+  margin: 0 0 4px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1e3a4a;
+}
+
+.sys-card-header p {
+  margin: 0;
+  font-size: 11px;
+  color: #8a9aa2;
+  line-height: 1.5;
+}
+
+.sys-settings-rows {
+  padding: 4px 0;
+}
+
+.sys-setting-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 16px 24px;
+  border-bottom: 1px solid #f5f8fa;
+  transition: background 0.15s ease;
+}
+
+.sys-setting-row:last-child {
+  border-bottom: none;
+}
+
+.sys-setting-row:hover {
+  background: #fafcfd;
+}
+
+.sys-setting-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.sys-setting-info strong {
+  display: block;
+  margin-bottom: 3px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #1e3a4a;
+}
+
+.sys-setting-info p {
+  margin: 0;
+  font-size: 11px;
+  color: #8a9aa2;
+  line-height: 1.5;
+}
+
+.sys-select {
+  height: 36px;
+  padding: 0 12px;
+  border: 1px solid #d8e4e8;
+  border-radius: 8px;
+  background: #ffffff;
+  font-family: inherit;
+  font-size: 11px;
+  color: #263b47;
+  outline: none;
+  min-width: 160px;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.sys-select:focus {
+  border-color: #0ba6a1;
+  box-shadow: 0 0 0 3px rgba(11, 166, 161, 0.08);
+}
+
+.sys-number-input {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sys-number-input input {
+  width: 60px;
+  height: 36px;
+  padding: 0 10px;
+  border: 1px solid #d8e4e8;
+  border-radius: 8px;
+  background: #ffffff;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1e3a4a;
+  text-align: center;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.sys-number-input input:focus {
+  border-color: #0ba6a1;
+}
+
+.sys-number-input span {
+  font-size: 11px;
+  color: #8a9aa2;
+}
+
+.sys-form-footer {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.save-settings-button {
+  height: 40px;
+  padding: 0 28px;
+  border: none;
+  border-radius: 9px;
+  background: linear-gradient(135deg, #087f87, #0ba6a1);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 5px 14px rgba(8, 127, 135, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.save-settings-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 7px 18px rgba(8, 127, 135, 0.26);
+}
+
+/* Page shell — these two classes are used only by this page and had no styles (dark body showed through) */
+.admin-page { display: flex; min-height: 100vh; background: #f8fafc; color: #0f172a; font-family: var(--font-app); }
+.admin-main { flex: 1; min-width: 0; display: flex; flex-direction: column; }

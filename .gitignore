@@ -1,0 +1,32 @@
+# =========================================================
+# Backend (Spring Boot / Maven)
+# =========================================================
+backend/spring-boot-app/target/
+backend/spring-boot-app/BOOT-INF/
+backend/spring-boot-app/META-INF/
+backend/spring-boot-app/data/
+backend/spring-boot-app/*.jar
+backend/spring-boot-app/*.class
+# Local-only secrets override (see application.properties comments) — never commit this.
+backend/spring-boot-app/application.properties
+*.log
+.mvn/wrapper/maven-wrapper.jar
+
+# =========================================================
+# Frontend (Vite / React)
+# =========================================================
+**/node_modules/
+Water-Usage-Monitoring-System/frontend/dist/
+Water-Usage-Monitoring-System/frontend/.vite/
+.env
+.env.local
+.env.*.local
+
+# =========================================================
+# Editor / OS
+# =========================================================
+.vscode/
+.idea/
+*.iml
+.DS_Store
+Thumbs.db

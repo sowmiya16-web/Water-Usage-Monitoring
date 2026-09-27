@@ -1,0 +1,145 @@
+/* =========================================================
+   USER DASHBOARD NAVBAR — FULLY CONTAINED LAYOUT
+========================================================= */
+
+.dashboard-header {
+  height: 92px;
+  min-height: 92px;
+  max-height: 92px;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+
+  padding: 0 36px;
+
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+
+  font-family: var(--font-app);
+
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.03);
+}
+
+/* 1. LEFT SECTION */
+.nav-left {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+}
+
+.header-title-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.header-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.3px;
+  color: #079b9b;
+  text-transform: uppercase;
+  margin-bottom: 3px;
+  line-height: 1;
+}
+
+.header-title-heading {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.4px;
+  color: #0f172a;
+  line-height: 1.2;
+}
+
+/* 2. RIGHT SECTION */
+.nav-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+}
+
+/* TAMIL APARTMENT BRAND CARD */
+.tamil-apartment-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: #f0fdfa;
+  border: 1px solid #ccfbf1;
+  padding: 8px 16px;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(15, 118, 110, 0.06);
+}
+
+.ta-badge {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #079b9b, #0f766e);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 4px rgba(7, 155, 155, 0.25);
+}
+
+.ta-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1.2;
+}
+
+.ta-info strong {
+  font-size: 14px;
+  font-weight: 800;
+  color: #0f766e;
+}
+
+.ta-info span {
+  font-size: 11px;
+  font-weight: 600;
+  color: #14b8a6;
+  margin-top: 1px;
+}
+
+/* RESPONSIVE BREAKPOINTS */
+@media (max-width: 768px) {
+  .dashboard-header {
+    padding: 0 16px;
+    height: 84px;
+    min-height: 84px;
+  }
+}
+/* Phones: keep the header inside the screen — drop the apartment card (it is shown in the sidebar) */
+@media (max-width: 600px) {
+  .dashboard-header { gap: 8px; }
+  .dashboard-header > *:first-child { min-width: 0; flex: 1 1 auto; }
+  .tamil-apartment-card { display: none; }
+  .nav-right { flex-shrink: 0; }
+}
+
+/* Admin previewing the Resident Portal: floating pill with a way back */
+.preview-pill {
+  position: fixed; left: 50%; bottom: 18px; transform: translateX(-50%); z-index: 300;
+  display: flex; align-items: center; gap: 12px; padding: 8px 10px 8px 16px; border-radius: 999px;
+  background: #0f172a; color: #fff; font-size: 12.5px; font-weight: 600; box-shadow: 0 10px 28px rgba(15, 23, 42, 0.35);
+  max-width: calc(100vw - 24px);
+}
+.preview-pill button { border: none; background: #079b9b; color: #fff; padding: 7px 14px; border-radius: 999px; font-weight: 700; font-size: 12px; cursor: pointer; font-family: inherit; white-space: nowrap; }
+.preview-pill button:hover { background: #0bb; }
+@media (max-width: 600px) { .preview-pill span { display: none; } .preview-pill { padding: 6px; } }

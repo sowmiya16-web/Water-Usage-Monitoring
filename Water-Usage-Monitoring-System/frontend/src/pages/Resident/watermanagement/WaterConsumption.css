@@ -1,0 +1,1022 @@
+/* =========================================================
+   WATER CONSUMPTION PAGE
+========================================================= */
+
+.water-consumption-page {
+  min-height: 100vh;
+  width: 100%;
+  background: #f7fafb;
+  font-family: var(--font-app);
+}
+
+.water-consumption-main {
+  margin-left: 265px;
+  min-height: 100vh;
+  flex: 1;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.water-consumption-content {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 36px 40px 60px;
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+.water-page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 28px;
+}
+
+.water-page-label {
+  display: block;
+  margin-bottom: 8px;
+  color: #15939a;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+}
+
+.water-page-header h2 {
+  margin: 0;
+  color: #153b48;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.water-page-header p {
+  margin: 8px 0 0;
+  color: #7b9097;
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   LIVE STATUS
+========================================================= */
+
+.live-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border: 1px solid #dceeee;
+  border-radius: 12px;
+  background: #ffffff;
+}
+
+.live-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #2bb582;
+  box-shadow: 0 0 0 5px #e5f6ef;
+}
+
+.live-status div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.live-status strong {
+  color: #24936e;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+.live-status small {
+  color: #879ba1;
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   LIVE METER CARD
+========================================================= */
+
+.live-meter-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 35px;
+  min-height: 170px;
+  padding: 28px 32px;
+  margin-bottom: 22px;
+  overflow: hidden;
+  border: 1px solid #d9eeee;
+  border-radius: 16px;
+  background: linear-gradient(
+    135deg,
+    #eefafa 0%,
+    #ffffff 65%
+  );
+  box-sizing: border-box;
+}
+
+.live-meter-card::after {
+  content: "";
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  right: -90px;
+  top: -110px;
+  border-radius: 50%;
+  background: #e3f6f6;
+}
+
+.live-meter-left {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.large-water-icon {
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 18px;
+  background: #dff5f5;
+  font-size: 34px;
+}
+
+.live-label {
+  display: block;
+  margin-bottom: 7px;
+  color: #5e858e;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.live-number {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.live-number strong {
+  color: #123c49;
+  font-size: 48px;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.live-number span {
+  color: #789097;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.live-meter-left p {
+  margin: 8px 0 0;
+  color: #80959b;
+  font-size: 11px;
+}
+
+.live-meter-stats {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  min-width: 420px;
+  border-left: 1px solid #dceced;
+}
+
+.live-meter-stats > div {
+  padding: 8px 25px;
+  border-right: 1px solid #dceced;
+}
+
+.live-meter-stats > div:last-child {
+  border-right: 0;
+}
+
+.live-meter-stats span {
+  display: block;
+  margin-bottom: 8px;
+  color: #879ba1;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.live-meter-stats strong {
+  color: #234752;
+  font-size: 15px;
+}
+
+.live-meter-stats .normal-text {
+  color: #23926d;
+}
+
+
+/* =========================================================
+   KPI GRID
+========================================================= */
+
+.consumption-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.consumption-kpi {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  min-height: 105px;
+  padding: 20px;
+  border: 1px solid #e1edef;
+  border-radius: 14px;
+  background: #ffffff;
+  box-sizing: border-box;
+  transition: 0.2s ease;
+}
+
+.consumption-kpi:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(31, 75, 85, 0.07);
+}
+
+.kpi-icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 11px;
+  font-size: 18px;
+}
+
+.water-kpi {
+  background: #e5f7f7;
+  color: #07959c;
+}
+
+.average-kpi {
+  background: #f0edfa;
+  color: #6b59ae;
+}
+
+.monthly-kpi {
+  background: #edf5f8;
+  color: #4c8392;
+}
+
+.savings-kpi {
+  background: #e9f8f1;
+  color: #26946f;
+}
+
+.kpi-content {
+  min-width: 0;
+}
+
+.kpi-label {
+  display: block;
+  margin-bottom: 5px;
+  color: #8a9da3;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.kpi-content strong {
+  display: block;
+  color: #193e49;
+  font-size: 22px;
+  line-height: 1.2;
+}
+
+.kpi-content small {
+  display: block;
+  margin-top: 5px;
+  color: #8a9ca2;
+  font-size: 12px;
+}
+
+.kpi-positive {
+  color: #27946e !important;
+}
+
+
+/* =========================================================
+   ANALYSIS GRID
+========================================================= */
+
+.water-analysis-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(340px, 0.8fr);
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.water-card {
+  min-width: 0;
+  padding: 25px;
+  border: 1px solid #e1edef;
+  border-radius: 15px;
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+.water-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.water-card-header h3 {
+  margin: 0 0 5px;
+  color: #183d48;
+  font-size: 18px;
+}
+
+.water-card-header p {
+  margin: 0;
+  color: #82959b;
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   SELECT
+========================================================= */
+
+.period-select {
+  min-width: 120px;
+  padding: 8px 12px;
+  border: 1px solid #dfeaec;
+  border-radius: 8px;
+  outline: none;
+  background: #ffffff;
+  color: #5e777f;
+  font-family: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   CHART SUMMARY
+========================================================= */
+
+.chart-summary {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.chart-summary > div:first-child span {
+  display: block;
+  margin-bottom: 4px;
+  color: #8a9da3;
+  font-size: 12px;
+}
+
+.chart-summary > div:first-child strong {
+  color: #183d48;
+  font-size: 29px;
+}
+
+.chart-change {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  color: #23936e;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.chart-change small {
+  margin-top: 3px;
+  color: #91a1a6;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+
+/* =========================================================
+   CHART
+========================================================= */
+
+.simple-chart {
+  display: flex;
+  width: 100%;
+  height: 300px;
+  box-sizing: border-box;
+}
+
+.chart-y-axis {
+  width: 40px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 4px 0 28px;
+  box-sizing: border-box;
+}
+
+.chart-y-axis span {
+  color: #9aabb0;
+  font-size: 12px;
+}
+
+.chart-area {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+}
+
+.chart-grid-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #edf2f3;
+}
+
+.line-1 {
+  top: 0;
+}
+
+.line-2 {
+  top: 25%;
+}
+
+.line-3 {
+  top: 50%;
+}
+
+.line-4 {
+  top: 75%;
+}
+
+.line-5 {
+  bottom: 28px;
+}
+
+.simple-chart-bars {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: space-around;
+  gap: 18px;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.simple-chart-column {
+  position: relative;
+  flex: 1;
+  min-width: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.chart-value {
+  margin-bottom: 6px;
+  color: #718991;
+  font-size: 12px;
+}
+
+.simple-bar-area {
+  width: 100%;
+  height: calc(100% - 45px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.simple-bar {
+  width: min(48px, 65%);
+  min-height: 10px;
+  border-radius: 8px 8px 2px 2px;
+  background: #9bdada;
+  transition: 0.25s ease;
+}
+
+.simple-bar:hover {
+  transform: translateY(-4px);
+}
+
+.simple-bar.current-bar {
+  background: #0b999f;
+}
+
+.simple-chart-column small {
+  height: 28px;
+  padding-top: 9px;
+  box-sizing: border-box;
+  color: #899ba1;
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   SMART INSIGHTS
+========================================================= */
+
+.smart-insight-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.smart-insight {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  padding: 15px;
+  border: 1px solid #edf2f3;
+  border-radius: 11px;
+  background: #fbfcfc;
+}
+
+.insight-icon {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 9px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.insight-icon.success {
+  background: #e8f7f0;
+  color: #26936e;
+}
+
+.insight-icon.decrease {
+  background: #e8f7f7;
+  color: #07959c;
+}
+
+.insight-icon.tip {
+  background: #fff6e8;
+  color: #b17b29;
+}
+
+.smart-insight section strong {
+  display: block;
+  margin-bottom: 5px;
+  color: #38555d;
+  font-size: 11px;
+}
+
+.smart-insight section p {
+  margin: 0;
+  color: #82959b;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   USAGE BREAKDOWN
+========================================================= */
+
+.usage-breakdown-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(340px, 0.8fr);
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.usage-breakdown-list {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
+
+.usage-row {
+  display: grid;
+  grid-template-columns: 80px 1fr 60px;
+  align-items: center;
+  gap: 15px;
+}
+
+.usage-row > span {
+  color: #71888f;
+  font-size: 13px;
+}
+
+.usage-row > strong {
+  color: #3c5860;
+  font-size: 13px;
+  text-align: right;
+}
+
+.usage-progress {
+  height: 7px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #edf2f3;
+}
+
+.usage-progress div {
+  height: 100%;
+  border-radius: inherit;
+  background: #91d3d3;
+}
+
+
+/* =========================================================
+   METER INFO
+========================================================= */
+
+.meter-info-card {
+  position: relative;
+}
+
+.meter-active-badge {
+  padding: 6px 10px;
+  border-radius: 20px;
+  background: #eaf8f1;
+  color: #24936e;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.7px;
+}
+
+.meter-info-list {
+  border-top: 1px solid #edf1f2;
+}
+
+.meter-info-list > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid #edf1f2;
+}
+
+.meter-info-list span {
+  color: #84979d;
+  font-size: 13px;
+}
+
+.meter-info-list strong {
+  color: #39545c;
+  font-size: 13px;
+}
+
+.connected-text {
+  color: #25936e !important;
+}
+
+.meter-details-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 17px;
+  padding: 11px 13px;
+  border: 1px solid #dcebec;
+  border-radius: 9px;
+  background: #f6fbfb;
+  color: #168e95;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.meter-details-button:hover {
+  background: #edf8f8;
+}
+
+
+/* =========================================================
+   WATER SAVING CARD
+========================================================= */
+
+.water-saving-card {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  padding: 21px 24px;
+  margin-bottom: 20px;
+  border: 1px solid #d9eeee;
+  border-radius: 14px;
+  background: #effafa;
+}
+
+.saving-icon {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 11px;
+  background: #dff4f4;
+  font-size: 19px;
+}
+
+.saving-content {
+  flex: 1;
+}
+
+.saving-content > span {
+  display: block;
+  margin-bottom: 4px;
+  color: #168f96;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.saving-content h3 {
+  margin: 0 0 4px;
+  color: #38545c;
+  font-size: 13px;
+}
+
+.saving-content p {
+  margin: 0;
+  color: #7c9197;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.water-saving-card > button {
+  padding: 10px 15px;
+  border: 0;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #168f96;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   QUICK ACTIONS
+========================================================= */
+
+.quick-actions-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  padding: 22px 25px;
+  border: 1px solid #e1edef;
+  border-radius: 14px;
+  background: #ffffff;
+}
+
+.quick-actions-card > div:first-child > span {
+  display: block;
+  margin-bottom: 5px;
+  color: #8ba0a5;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+}
+
+.quick-actions-card h3 {
+  margin: 0;
+  color: #294b55;
+  font-size: 14px;
+}
+
+.quick-action-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.quick-action-buttons button {
+  min-width: 170px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 14px;
+  border: 1px solid #e0eaec;
+  border-radius: 9px;
+  background: #ffffff;
+  color: #45626a;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.quick-action-buttons button:hover {
+  border-color: #b9dfe0;
+  background: #f7fbfb;
+}
+
+.quick-action-buttons button span {
+  color: #07959c;
+  font-size: 14px;
+}
+
+.quick-action-buttons button b {
+  margin-left: auto;
+  color: #07959c;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1250px) {
+
+  .consumption-kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .water-analysis-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .usage-breakdown-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .live-meter-stats {
+    min-width: 360px;
+  }
+}
+
+
+@media (max-width: 950px) {
+
+  .water-consumption-main {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .water-consumption-content {
+    padding: 30px 25px 50px;
+  }
+
+  .live-meter-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .live-meter-stats {
+    width: 100%;
+    min-width: 0;
+    border-left: 0;
+    border-top: 1px solid #dceced;
+    padding-top: 18px;
+  }
+
+  .live-meter-stats > div {
+    padding: 5px 15px;
+  }
+}
+
+
+@media (max-width: 700px) {
+
+  .water-consumption-content {
+    padding: 22px 16px 40px;
+  }
+
+  .water-page-header {
+    flex-direction: column;
+  }
+
+  .water-page-header h2 {
+    font-size: 26px;
+  }
+
+  .consumption-kpi-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .live-meter-left {
+    align-items: flex-start;
+  }
+
+  .large-water-icon {
+    width: 58px;
+    height: 58px;
+    font-size: 27px;
+  }
+
+  .live-number strong {
+    font-size: 38px;
+  }
+
+  .live-meter-stats {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  .live-meter-stats > div {
+    border-right: 0;
+  }
+
+  .water-card {
+    padding: 20px;
+  }
+
+  .water-card-header {
+    flex-direction: column;
+  }
+
+  .period-select {
+    width: 100%;
+  }
+
+  .simple-chart {
+    height: 250px;
+  }
+
+  .usage-row {
+    grid-template-columns: 70px 1fr 50px;
+    gap: 9px;
+  }
+
+  .water-saving-card {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .water-saving-card > button {
+    width: 100%;
+  }
+
+  .quick-actions-card {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .quick-action-buttons {
+    flex-direction: column;
+  }
+
+  .quick-action-buttons button {
+    width: 100%;
+  }
+}
+
+
+@media (max-width: 450px) {
+
+  .live-meter-card {
+    padding: 20px;
+  }
+
+  .live-meter-left {
+    gap: 13px;
+  }
+
+  .live-label {
+    font-size: 12px;
+  }
+
+  .live-number strong {
+    font-size: 32px;
+  }
+
+  .chart-summary > div:first-child strong {
+    font-size: 24px;
+  }
+
+  .simple-chart-bars {
+    gap: 5px;
+    padding: 0;
+  }
+
+  .simple-bar {
+    width: 55%;
+  }
+}

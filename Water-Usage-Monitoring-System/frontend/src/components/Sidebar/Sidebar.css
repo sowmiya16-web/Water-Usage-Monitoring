@@ -1,0 +1,9 @@
+@import url("../AdminSidebar/AdminSidebar.css");
+
+.resident-black-sidebar {
+  /* Inherits exact black sidebar styling from AdminSidebar.css */
+}
+/* Header leaves room for the menu button on phones */
+@media (max-width: 900px) {
+  .resident-black-sidebar ~ main .dashboard-header { padding-left: 64px; }
+}
