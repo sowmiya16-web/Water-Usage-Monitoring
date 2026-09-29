@@ -622,4 +622,84 @@ public class EmailService {
             return false;
         }
     }
+
+    // =========================================================
+    // SEND DOCUMENT VERIFICATION STATUS EMAIL
+    // =========================================================
+
+    /**
+     * Sent to a resident the moment a Community Admin verifies or rejects one of their
+     * uploaded documents. status is "VERIFIED" or "REJECTED"; rejectionReason is only
+     * present (and shown) for a rejection.
+     */
+    public boolean sendDocumentStatusEmail(
+            String recipientEmail,
+            String residentName,
+            String documentType,
+            String status,
+            String rejectionReason) {
+
+        if (mailSender == null) {
+            logger.warn("[EmailService] JavaMailSender is null. Skipping document status email for {}", recipientEmail);
+            return false;
+        }
+
+        if (recipientEmail == null || recipientEmail.trim().isEmpty()) {
+            logger.error("[EmailService] Recipient email is empty. Document status email skipped.");
+            return false;
+        }
+
+        boolean verified = "VERIFIED".equals(status);
+
+        try {
+            MimeMessage mimeMessage = mailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true, "UTF-8");
+
+            helper.setFrom(fromAdminEmail);
+            helper.setTo(recipientEmail.trim());
+            helper.setSubject(verified
+                    ? "✅ Your document has been verified"
+                    : "⚠️ Your document was rejected — action needed");
+
+            String headerColor = verified ? "#15803d" : "#b91c1c";
+            String headerTitle = verified ? "✅ Document Verified" : "⚠️ Document Rejected";
+            String loginUrl = frontendUrl.endsWith("/") ? frontendUrl + "resident/documents" : frontendUrl + "/resident/documents";
+
+            String bodyHtml = "<html><body style='font-family: Arial, sans-serif; color: #333; line-height: 1.6;'>"
+                    + "<div style='max-width: 600px; margin: 0 auto; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;'>"
+                    + "<div style='background-color: " + headerColor + "; color: white; padding: 20px; text-align: center;'>"
+                    + "<h2 style='margin:0;'>" + headerTitle + "</h2>"
+                    + "<p style='margin:5px 0 0; opacity:0.9;'>Aqua Plus — Smart Water Usage Monitoring System</p>"
+                    + "</div>"
+                    + "<div style='padding: 24px;'>"
+                    + "<p>Hello <strong>" + val(residentName) + "</strong>,</p>"
+                    + (verified
+                        ? "<p>Good news — your <strong>" + val(documentType) + "</strong> has been reviewed and verified by your Community Admin. "
+                          + "You now have full access to your apartment's water usage, bills, payments and alerts.</p>"
+                        : "<p>Your <strong>" + val(documentType) + "</strong> was reviewed by your Community Admin and could not be accepted. "
+                          + "Please upload a new, valid document so your residency can be confirmed.</p>")
+                    + (!verified && rejectionReason != null && !rejectionReason.isBlank()
+                        ? "<div style='background-color: #fef2f2; border-left: 4px solid #ef4444; padding: 15px; margin: 15px 0; border-radius: 4px;'>"
+                          + "<strong style='color:#b91c1c;'>Reason given:</strong> <span style='color:#475569;'>" + val(rejectionReason) + "</span>"
+                          + "</div>"
+                        : "")
+                    + "<div style='margin-top: 25px; text-align: center;'>"
+                    + "<a href='" + loginUrl + "' style='background-color: " + headerColor + "; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold; display: inline-block;'>"
+                    + (verified ? "Open Resident Portal" : "Upload a new document") + "</a>"
+                    + "</div>"
+                    + "</div>"
+                    + "<div style='background-color: #f1f5f9; color: #64748b; padding: 15px; text-align: center; font-size: 12px;'>"
+                    + "<p style='margin:0;'>Water Usage Monitoring System &copy; 2026</p>"
+                    + "</div>"
+                    + "</div></body></html>";
+
+            helper.setText(bodyHtml, true);
+            mailSender.send(mimeMessage);
+            logger.info("[EmailService] Document status ({}) email successfully sent to {}", status, recipientEmail);
+            return true;
+        } catch (Exception e) {
+            logger.error("[EmailService] Failed to send document status email: {}", e.getMessage(), e);
+            return false;
+        }
+    }
 }

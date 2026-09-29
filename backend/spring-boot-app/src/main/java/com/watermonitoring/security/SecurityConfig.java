@@ -40,6 +40,17 @@ public class SecurityConfig {
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/api/auth/**", "/api/test/**", "/h2-console/**", "/error", "/api/chat/public", "/api/translate/**").permitAll()
                 .requestMatchers("/api/community-admin/**").hasAnyAuthority("ROLE_COMMUNITY_ADMIN", "ROLE_PROPERTY_ADMIN")
+                .requestMatchers(HttpMethod.PUT, "/api/documents/settings").hasAuthority("ROLE_PROPERTY_ADMIN")
+                .requestMatchers("/api/documents/stats").hasAuthority("ROLE_PROPERTY_ADMIN")
+                .requestMatchers("/api/documents/review-queue").hasAnyAuthority("ROLE_COMMUNITY_ADMIN", "ROLE_PROPERTY_ADMIN")
+                .requestMatchers(HttpMethod.POST, "/api/documents/*/review").hasAnyAuthority("ROLE_COMMUNITY_ADMIN", "ROLE_PROPERTY_ADMIN")
+                .requestMatchers("/api/documents/**").authenticated()
+                // These used to be fully public (no rule matched them, so the anyRequest().permitAll()
+                // catch-all below applied), which let anyone with no login read any apartment's real
+                // bills/invoices/alerts. Closed to require a signed-in resident/admin.
+                .requestMatchers("/api/invoices/**").hasAnyAuthority("ROLE_RESIDENT", "ROLE_PROPERTY_ADMIN", "ROLE_COMMUNITY_ADMIN")
+                .requestMatchers("/api/alerts/**").hasAnyAuthority("ROLE_RESIDENT", "ROLE_PROPERTY_ADMIN", "ROLE_COMMUNITY_ADMIN")
+                .requestMatchers("/api/bills/**").hasAnyAuthority("ROLE_RESIDENT", "ROLE_PROPERTY_ADMIN", "ROLE_COMMUNITY_ADMIN")
                 .requestMatchers(HttpMethod.POST, "/api/tariffs/**", "/api/billing-cycles/**", "/api/bulk-purchases/**", "/api/meters/**")
                         .hasAnyAuthority("ROLE_COMMUNITY_ADMIN", "ROLE_PROPERTY_ADMIN")
                 .requestMatchers("/api/admin/**").hasAuthority("ROLE_PROPERTY_ADMIN")

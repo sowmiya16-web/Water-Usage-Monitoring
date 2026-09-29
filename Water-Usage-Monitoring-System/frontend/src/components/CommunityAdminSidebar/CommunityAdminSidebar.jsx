@@ -34,6 +34,14 @@ function CommunityAdminSidebar({ activePage = "Overview" }) {
       ],
     },
     {
+      id: "documentVerification",
+      title: "Document Verification",
+      icon: "🗂️",
+      items: [
+        { name: "Document Verification", path: "/admin/documents", icon: "📄" },
+      ],
+    },
+    {
       id: "adminManagement",
       title: "Admin Management",
       icon: "🛡️",

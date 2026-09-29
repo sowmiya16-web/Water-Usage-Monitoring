@@ -5,11 +5,18 @@ import { API_BASE_URL as API_ROOT } from "./apiConfig";
 
 const API_BASE_URL = `${API_ROOT}/alerts`;
 
+// /api/alerts/** now requires an authenticated resident/admin (it used to be fully public),
+// so every request here must carry the bearer token like the rest of the app's services do.
+const authHeaders = () => {
+  const token = localStorage.getItem("authToken");
+  return token ? { Authorization: `Bearer ${token}` } : {};
+};
+
 export const alertService = {
   // 1. Fetch all alerts for Admin Monitoring
   async getAllAlerts() {
     try {
-      const response = await fetch(API_BASE_URL);
+      const response = await fetch(API_BASE_URL, { headers: authHeaders() });
       if (!response.ok) throw new Error("Failed to fetch system alerts");
       const result = await response.json();
       return result.data || [];
@@ -23,7 +30,7 @@ export const alertService = {
   async getResidentAlerts(userId) {
     try {
       const url = userId ? `${API_BASE_URL}/user/${userId}` : API_BASE_URL;
-      const response = await fetch(url);
+      const response = await fetch(url, { headers: authHeaders() });
       if (!response.ok) throw new Error("Failed to fetch resident alerts");
       const result = await response.json();
       return result.data || [];
@@ -40,7 +47,7 @@ export const alertService = {
       if (userId) params.append("userId", userId);
       if (apartmentId) params.append("apartmentId", apartmentId);
 
-      const response = await fetch(`${API_BASE_URL}/unread-count?${params.toString()}`);
+      const response = await fetch(`${API_BASE_URL}/unread-count?${params.toString()}`, { headers: authHeaders() });
       if (!response.ok) return 0;
       const result = await response.json();
       return result.data?.unreadCount || 0;
@@ -55,6 +62,7 @@ export const alertService = {
     try {
       const response = await fetch(`${API_BASE_URL}/${alertId}/acknowledge`, {
         method: "PUT",
+        headers: authHeaders(),
       });
       if (!response.ok) throw new Error("Failed to acknowledge alert");
       const result = await response.json();
@@ -74,6 +82,7 @@ export const alertService = {
 
       const response = await fetch(`${API_BASE_URL}/acknowledge-all?${params.toString()}`, {
         method: "PUT",
+        headers: authHeaders(),
       });
       if (!response.ok) throw new Error("Failed to acknowledge all alerts");
       const result = await response.json();
@@ -89,6 +98,7 @@ export const alertService = {
     try {
       const response = await fetch(`${API_BASE_URL}/${alertId}/resolve`, {
         method: "PUT",
+        headers: authHeaders(),
       });
       if (!response.ok) throw new Error("Failed to update alert status");
       const result = await response.json();
@@ -104,6 +114,7 @@ export const alertService = {
     try {
       const response = await fetch(`${API_BASE_URL}/evaluate`, {
         method: "POST",
+        headers: authHeaders(),
       });
       if (!response.ok) throw new Error("Failed to trigger alert evaluation");
       const result = await response.json();
@@ -117,7 +128,7 @@ export const alertService = {
   // 8. Fetch threshold config
   async getConfig() {
     try {
-      const response = await fetch(`${API_BASE_URL}/config`);
+      const response = await fetch(`${API_BASE_URL}/config`, { headers: authHeaders() });
       if (!response.ok) throw new Error("Failed to fetch alert config");
       const result = await response.json();
       return result.data;
@@ -132,7 +143,7 @@ export const alertService = {
     try {
       const response = await fetch(`${API_BASE_URL}/config`, {
         method: "PUT",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", ...authHeaders() },
         body: JSON.stringify(configData),
       });
       if (!response.ok) throw new Error("Failed to update alert config");

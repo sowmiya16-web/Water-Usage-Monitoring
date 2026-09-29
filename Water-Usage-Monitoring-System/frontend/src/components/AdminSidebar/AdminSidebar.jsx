@@ -31,6 +31,14 @@ function AdminSidebar({ activePage }) {
       ],
     },
     {
+      id: "documentVerification",
+      title: "Document Verification",
+      icon: "🗂️",
+      items: [
+        { name: "Document Verification", path: "/admin/documents", icon: "📄" },
+      ],
+    },
+    {
       id: "waterManagement",
       title: "Water Management",
       icon: "💧",

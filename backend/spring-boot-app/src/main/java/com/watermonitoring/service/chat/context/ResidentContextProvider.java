@@ -29,6 +29,7 @@ public class ResidentContextProvider {
     private final BillRepository billRepository;
     private final AlertRepository alertRepository;
     private final WaterUsageRepository waterUsageRepository;
+    private final DocumentVerificationRepository documentVerificationRepository;
     private final ResidentDashboardService dashboardService;
     private final ResidentComparisonService comparisonService;
 
@@ -39,6 +40,7 @@ public class ResidentContextProvider {
                                    BillRepository billRepository,
                                    AlertRepository alertRepository,
                                    WaterUsageRepository waterUsageRepository,
+                                   DocumentVerificationRepository documentVerificationRepository,
                                    ResidentDashboardService dashboardService,
                                    ResidentComparisonService comparisonService) {
         this.userRepository = userRepository;
@@ -47,6 +49,7 @@ public class ResidentContextProvider {
         this.billRepository = billRepository;
         this.alertRepository = alertRepository;
         this.waterUsageRepository = waterUsageRepository;
+        this.documentVerificationRepository = documentVerificationRepository;
         this.dashboardService = dashboardService;
         this.comparisonService = comparisonService;
     }
@@ -146,6 +149,24 @@ public class ResidentContextProvider {
                     sb.append("   - None. System operating normally.\n");
                 } else {
                     activeAlerts.forEach(a -> sb.append("   - [").append(a.getSeverity()).append("] ").append(a.getTitle()).append("\n"));
+                }
+
+                // Document verification (My Documents page): let the resident ask things like
+                // "am I verified?" or "why was my document rejected?" without leaving the chat.
+                List<DocumentVerification> docs = documentVerificationRepository.findByApartmentIdOrderByUploadedAtDesc(apt.getApartmentId());
+                boolean docVerified = docs.stream().anyMatch(d -> "VERIFIED".equals(d.getStatus()));
+                sb.append("• Document Verification: ");
+                if (docs.isEmpty()) {
+                    sb.append("No document has been uploaded yet. Direct the resident to the My Documents page to upload a residence/ID proof.\n");
+                } else {
+                    DocumentVerification latest = docs.get(0);
+                    sb.append(docVerified ? "VERIFIED" : latest.getStatus())
+                      .append(" (latest submission: ").append(latest.getDocumentType())
+                      .append(", uploaded ").append(latest.getUploadedAt() != null ? latest.getUploadedAt().toLocalDate() : "n/a").append(")");
+                    if (!docVerified && "REJECTED".equals(latest.getStatus()) && latest.getRejectionReason() != null) {
+                        sb.append(" — rejection reason: ").append(latest.getRejectionReason());
+                    }
+                    sb.append("\n");
                 }
             } else {
                 sb.append("Notice: This account is not linked to a household yet, so there is no meter, usage or billing data to show. Ask the community admin to link it.\n");

@@ -28,7 +28,7 @@ public class AlertController {
     }
 
     // =========================================================
-    // 1. GET ALL ALERTS (Admin Dashboard)
+    // 1. GET ALL ALERTS (Admin Dashboard, and the Resident Portal's own alerts page)
     // =========================================================
     @GetMapping
     public ResponseEntity<ApiResponse<List<Alert>>> getAllAlerts() {

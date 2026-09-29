@@ -71,8 +71,10 @@ import MeterReadings from "./pages/Admin/CommunityOps/MeterReadings";
 import BillingCycles from "./pages/Admin/CommunityOps/BillingCycles";
 import TariffVersions from "./pages/Admin/CommunityOps/TariffVersions";
 import BulkPurchases from "./pages/Admin/CommunityOps/BulkPurchases";
+import DocumentVerification from "./pages/Admin/CommunityOps/DocumentVerification";
 
 import ConsumptionComparison from "./pages/Resident/Comparison/ConsumptionComparison";
+import MyDocuments from "./pages/Resident/Documents/MyDocuments";
 
 import Residents
   from "./pages/Admin/UserManagement/Residents";
@@ -430,6 +432,15 @@ function App() {
           }
         />
 
+        <Route
+          path="/resident/documents"
+          element={
+            <ProtectedRoute>
+              <MyDocuments />
+            </ProtectedRoute>
+          }
+        />
+
 
         <Route
           path="/resident/current-bill"
@@ -675,6 +686,15 @@ function App() {
           element={
             <AdminRoute>
               <BulkPurchases />
+            </AdminRoute>
+          }
+        />
+
+        <Route
+          path="/admin/documents"
+          element={
+            <AdminRoute>
+              <DocumentVerification />
             </AdminRoute>
           }
         />

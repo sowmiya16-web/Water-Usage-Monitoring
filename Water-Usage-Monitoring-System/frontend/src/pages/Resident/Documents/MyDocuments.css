@@ -1,0 +1,234 @@
+/* =========================================================
+   MY DOCUMENTS PAGE LAYOUT
+========================================================= */
+
+.mydocs-page {
+  display: flex;
+  min-height: 100vh;
+  background: #f6f9fb;
+  font-family: var(--font-app);
+}
+
+.mydocs-main {
+  flex: 1;
+  margin-left: 265px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-width: 0;
+}
+
+.mydocs-content {
+  flex: 1;
+  padding: 32px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.mydocs-heading .section-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  color: #079b9b;
+  margin-bottom: 6px;
+}
+.mydocs-heading h2 { margin: 0 0 4px; font-size: 24px; color: #0f172a; }
+.mydocs-heading p { margin: 0; color: #64748b; font-size: 14px; }
+
+.mydocs-notice { padding: 12px 16px; border-radius: 12px; font-size: 13.5px; font-weight: 500; }
+.mydocs-notice.error { background: #fef2f2; border: 1px solid #fecaca; color: #b91c1c; }
+.mydocs-notice.success { background: #ecfdf5; border: 1px solid #a7f3d0; color: #047857; }
+
+.mydocs-loading { padding: 40px; text-align: center; color: #64748b; }
+
+.mydocs-upload-card, .mydocs-list-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 20px 22px;
+}
+.mydocs-upload-card h3, .mydocs-list-card h3 { margin: 0 0 4px; font-size: 16px; color: #0f172a; }
+.mydocs-instructions { margin: 0 0 16px; font-size: 13px; color: #64748b; }
+
+.mydocs-form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 12px;
+}
+.mydocs-field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.mydocs-field label { font-size: 12.5px; font-weight: 700; color: #334155; }
+.mydocs-field select, .mydocs-field input[type="file"] {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 9px 12px;
+  font-size: 14px;
+  font-family: inherit;
+  background: #fff;
+  color: #0f172a;
+}
+.mydocs-field select:focus, .mydocs-field input:focus { outline: 2px solid #99f6e4; border-color: #079b9b; }
+.mydocs-field.invalid select, .mydocs-field.invalid input { border-color: #ef4444; }
+.mydocs-field .err { color: #b91c1c; font-size: 12px; }
+
+.mydocs-btn {
+  margin-top: 18px;
+  background: #079b9b;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 13.5px;
+  cursor: pointer;
+}
+.mydocs-btn:hover:not(:disabled) { background: #068484; }
+.mydocs-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.mydocs-table-wrap { overflow-x: auto; margin-top: 8px; }
+.mydocs-table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 0; }
+.mydocs-table th {
+  text-align: left;
+  font-size: 10.5px;
+  letter-spacing: 0.8px;
+  color: #64748b;
+  font-weight: 700;
+  padding: 8px 10px;
+  border-bottom: 1px solid #e2e8f0;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+.mydocs-table td { padding: 11px 10px; border-bottom: 1px solid #f1f5f9; color: #1e293b; vertical-align: top; }
+.mydocs-filename { max-width: 220px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.mydocs-empty { padding: 28px 12px; text-align: center; color: #94a3b8; font-size: 14px; }
+.mydocs-actions { display: flex; gap: 12px; align-items: center; }
+.mydocs-link { background: none; border: none; color: #0d8a8a; font-weight: 600; font-size: 13px; cursor: pointer; padding: 0; }
+.mydocs-link:hover { text-decoration: underline; }
+.mydocs-link.danger { color: #b91c1c; }
+.mydocs-link:disabled { opacity: 0.6; cursor: not-allowed; text-decoration: none; }
+.mydocs-rejection { margin-top: 4px; font-size: 11.5px; color: #b91c1c; max-width: 220px; }
+
+.doc-status-pill { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 11px; font-weight: 700; white-space: nowrap; }
+.doc-status-none { background: #f1f5f9; color: #475569; }
+.doc-status-pending { background: #fef3c7; color: #b45309; }
+.doc-status-review { background: #e0f2fe; color: #0369a1; }
+.doc-status-verified { background: #d1fae5; color: #047857; }
+.doc-status-rejected { background: #fee2e2; color: #b91c1c; }
+
+/* =========================================================
+   STATUS HERO
+========================================================= */
+
+.docver-hero {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 22px 24px;
+  border-left: 4px solid #94a3b8;
+}
+.docver-hero-none { border-left-color: #94a3b8; }
+.docver-hero-pending, .docver-hero-under_review { border-left-color: #d97706; }
+.docver-hero-verified { border-left-color: #059669; }
+.docver-hero-rejected { border-left-color: #dc2626; background: #fffaf9; }
+
+.docver-hero-top { display: flex; align-items: flex-start; gap: 16px; }
+.docver-hero-icon {
+  flex-shrink: 0;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: #f1f5f9; color: #64748b;
+}
+.docver-hero-icon.icon-verified { background: #d1fae5; color: #047857; }
+.docver-hero-icon.icon-pending, .docver-hero-icon.icon-under_review { background: #fef3c7; color: #b45309; }
+.docver-hero-icon.icon-rejected { background: #fee2e2; color: #b91c1c; }
+
+.docver-hero-text { flex: 1; min-width: 0; }
+.docver-hero-text h3 { margin: 0 0 4px; font-size: 17px; color: #0f172a; }
+.docver-hero-text p { margin: 0; font-size: 13.5px; color: #64748b; line-height: 1.5; }
+.docver-reason {
+  margin-top: 10px; padding: 8px 12px; background: #fef2f2; border: 1px solid #fecaca;
+  border-radius: 10px; font-size: 13px; color: #b91c1c;
+}
+
+.docver-hero-cta {
+  margin-top: 0; flex-shrink: 0;
+  display: inline-flex; align-items: center; gap: 8px;
+  white-space: nowrap;
+}
+
+.docver-steps {
+  display: flex; align-items: center;
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid #f1f5f9;
+}
+.docver-step { display: flex; align-items: center; gap: 8px; flex: 1; }
+.docver-step:last-child { flex: 0 0 auto; }
+.docver-step-dot {
+  flex-shrink: 0;
+  width: 24px; height: 24px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700;
+  background: #e2e8f0; color: #64748b;
+}
+.docver-step.done .docver-step-dot { background: #079b9b; color: #fff; }
+.docver-step.current .docver-step-dot { background: #0f172a; color: #fff; }
+.docver-step-label { font-size: 12.5px; font-weight: 600; color: #64748b; white-space: nowrap; }
+.docver-step.done .docver-step-label, .docver-step.current .docver-step-label { color: #0f172a; }
+.docver-step-line { flex: 1; height: 2px; background: #e2e8f0; margin: 0 4px; }
+.docver-step.done .docver-step-line { background: #079b9b; }
+
+/* =========================================================
+   INFO GRID (required docs / formats / guidelines / timeline / security)
+========================================================= */
+
+.docver-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+.docver-info-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 18px 20px;
+}
+.docver-info-wide { grid-column: 1 / -1; }
+.docver-info-head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.docver-info-icon {
+  flex-shrink: 0;
+  width: 32px; height: 32px; border-radius: 9px;
+  display: flex; align-items: center; justify-content: center;
+  background: #ecfdfb; color: #079b9b;
+}
+.docver-info-head h4 { margin: 0; font-size: 14.5px; color: #0f172a; }
+.docver-info-lead { margin: 0; font-size: 13px; color: #64748b; line-height: 1.55; }
+
+.docver-checklist, .docver-plainlist { margin: 0; padding: 0; list-style: none; }
+.docver-checklist li, .docver-plainlist li {
+  position: relative; padding-left: 20px; margin-bottom: 8px;
+  font-size: 13px; color: #334155; line-height: 1.4;
+}
+.docver-checklist li:last-child, .docver-plainlist li:last-child { margin-bottom: 0; }
+.docver-checklist li::before {
+  content: "✓"; position: absolute; left: 0; top: 0;
+  color: #079b9b; font-weight: 700; font-size: 12px;
+}
+.docver-plainlist li::before {
+  content: ""; position: absolute; left: 0; top: 7px;
+  width: 5px; height: 5px; border-radius: 50%; background: #94a3b8;
+}
+
+@media (max-width: 900px) {
+  .mydocs-main { margin-left: 0; }
+  .mydocs-content { padding: 16px; }
+  .docver-hero-top { flex-wrap: wrap; }
+  .docver-hero-cta { width: 100%; justify-content: center; }
+  .docver-steps { flex-wrap: wrap; gap: 10px; }
+  .docver-step-line { display: none; }
+}

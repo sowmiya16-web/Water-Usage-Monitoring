@@ -41,6 +41,14 @@ function Sidebar({ activePage = "Overview", onNavigate, onLogout }) {
       ],
     },
     {
+      id: "documents",
+      title: "Document Verification",
+      icon: "🗂️",
+      items: [
+        { name: "My Documents", page: "My Documents", route: "/resident/documents", icon: "📄" },
+      ],
+    },
+    {
       id: "account",
       title: "Account & Settings",
       icon: "👤",
