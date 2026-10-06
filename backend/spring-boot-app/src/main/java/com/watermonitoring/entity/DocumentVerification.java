@@ -43,10 +43,10 @@ public class DocumentVerification {
     @Column(name = "file_size", nullable = false)
     private Long fileSize;
 
-    // Length forces MySQL to size this as LONGBLOB instead of the 255-byte-default TINYBLOB
-    // (the same fix Invoice.pdfData needed) — a scanned ID/PDF is far bigger than that.
-    @Lob
-    @JdbcTypeCode(SqlTypes.BLOB)
+    // Plain binary (not @Lob/BLOB): the 32 MB length makes MySQL create LONGBLOB (a scanned ID/PDF
+    // is far bigger than the 255-byte TINYBLOB default) and on Postgres it becomes bytea, avoiding
+    // the `oid` large-object type that fails outside a transaction. Same fix as Invoice.pdfData.
+    @JdbcTypeCode(SqlTypes.VARBINARY)
     @Column(name = "file_data", nullable = false, length = 33_554_432)
     private byte[] fileData;
 

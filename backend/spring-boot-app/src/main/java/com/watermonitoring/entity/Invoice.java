@@ -33,11 +33,11 @@ public class Invoice {
     @Column(name = "apartment_id", nullable = false)
     private Long apartmentId;
 
-    // Hibernate sizes a BLOB column from its length: the default (255) yields MySQL TINYBLOB, which
-    // is far too small for a PDF. An explicit 32 MB length makes MySQL create LONGBLOB while staying
-    // portable (no MySQL-only columnDefinition, so Postgres still works).
-    @Lob
-    @JdbcTypeCode(SqlTypes.BLOB)
+    // Plain binary (not @Lob/BLOB): the explicit 32 MB length makes MySQL create LONGBLOB, and on
+    // Postgres it becomes bytea. A @Lob BLOB maps to Postgres `oid` large objects, which fail
+    // outside a transaction ("Large Objects may not be used in auto-commit mode") — and the
+    // invoice download endpoints are not transactional.
+    @JdbcTypeCode(SqlTypes.VARBINARY)
     @Column(name = "pdf_data", nullable = false, length = 33_554_432)
     private byte[] pdfData;
 
