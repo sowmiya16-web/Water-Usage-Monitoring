@@ -28,6 +28,11 @@ export default defineConfig({
     // page never even loads on a phone — "localhost" refused/unreachable.
     host: true,
     port: 5173,
+    // Vite rejects requests whose Host header it doesn't recognize (DNS-rebinding
+    // protection). A Cloudflare Quick Tunnel puts a random *.trycloudflare.com host
+    // in front of this dev server for real-HTTPS phone testing, so that suffix needs
+    // an explicit allow — dev-only, never applies to a production build.
+    allowedHosts: ['.trycloudflare.com'],
     // Proxy /api/* to the Spring Boot backend. The browser only ever calls the
     // relative path "/api/...", which Vite forwards server-side to the backend on
     // this same machine — so it works identically whether the page was opened as

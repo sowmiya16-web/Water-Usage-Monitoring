@@ -35,19 +35,29 @@ public class CorsConfig {
                 // NOTE: CorsRegistration.allowedOriginPatterns(...) REPLACES the list on every
                 // call, it doesn't append — so the full set has to be assembled first and
                 // passed in one call.
-                java.util.List<String> patterns = new java.util.ArrayList<>(java.util.List.of(
-                        "http://localhost:*",
-                        "http://127.0.0.1:*",
+                //
+                // Both http:// and https:// variants are needed: plain http for the normal
+                // "npm run dev" LAN case, and https for "npm run dev:lan" (self-signed cert),
+                // which is required for PWA install-ability testing from a real phone.
+                java.util.List<String> hosts = java.util.List.of(
+                        "localhost:*",
+                        "127.0.0.1:*",
                         // Private LAN ranges (RFC 1918) on any port — covers phones/tablets
-                        // opening the dev server from http://<PC-LAN-IP>:5173 on the same Wi-Fi.
-                        "http://192.168.*.*:*",
-                        "http://10.*.*.*:*",
-                        "http://172.16.*.*:*", "http://172.17.*.*:*", "http://172.18.*.*:*",
-                        "http://172.19.*.*:*", "http://172.20.*.*:*", "http://172.21.*.*:*",
-                        "http://172.22.*.*:*", "http://172.23.*.*:*", "http://172.24.*.*:*",
-                        "http://172.25.*.*:*", "http://172.26.*.*:*", "http://172.27.*.*:*",
-                        "http://172.28.*.*:*", "http://172.29.*.*:*", "http://172.30.*.*:*",
-                        "http://172.31.*.*:*"));
+                        // opening the dev server from <PC-LAN-IP>:5173 (or :5174 for dev:lan)
+                        // on the same Wi-Fi.
+                        "192.168.*.*:*",
+                        "10.*.*.*:*",
+                        "172.16.*.*:*", "172.17.*.*:*", "172.18.*.*:*",
+                        "172.19.*.*:*", "172.20.*.*:*", "172.21.*.*:*",
+                        "172.22.*.*:*", "172.23.*.*:*", "172.24.*.*:*",
+                        "172.25.*.*:*", "172.26.*.*:*", "172.27.*.*:*",
+                        "172.28.*.*:*", "172.29.*.*:*", "172.30.*.*:*",
+                        "172.31.*.*:*");
+                java.util.List<String> patterns = new java.util.ArrayList<>();
+                for (String host : hosts) {
+                    patterns.add("http://" + host);
+                    patterns.add("https://" + host);
+                }
 
                 if (extraOrigins != null && !extraOrigins.isBlank()) {
                     for (String origin : extraOrigins.split(",")) {
